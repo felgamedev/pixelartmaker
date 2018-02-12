@@ -17,6 +17,12 @@ colorPicker.addEventListener('change', function(event){
   colorSelected = colorPicker.value;
 });
 
+table.addEventListener('click', function(event){
+  if(event.target.nodeName === "TD"){
+    event.target.style.backgroundColor = colorSelected;
+  }
+});
+
 function makeGrid() {
   let tableRows = canvasHeight.value;
   let tableColumns = canvasWidth.value;
@@ -34,6 +40,6 @@ function makeGrid() {
     tableHtml += `</tr>
     `;
   }
-  
+
   table.innerHTML = tableHtml;
 }
