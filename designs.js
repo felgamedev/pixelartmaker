@@ -18,7 +18,22 @@ colorPicker.addEventListener('change', function(event){
 });
 
 function makeGrid() {
+  let tableRows = canvasHeight.value;
+  let tableColumns = canvasWidth.value;
 
-// Your code goes here!
-
+  let tableHtml = "";
+  // Build table with a string of HTML table elements
+  for(let y = 0; y < tableRows; y++){
+    tableHtml +=
+    `<tr>
+    `;
+    for(let x = 0; x < tableColumns; x++){
+      tableHtml += `<td></td>
+      `;
+    }
+    tableHtml += `</tr>
+    `;
+  }
+  
+  table.innerHTML = tableHtml;
 }
