@@ -1,7 +1,9 @@
-// Select color input
-// Select size input
+const colorPicker = document.querySelector('#colorPicker');
+const canvasWidth = document.querySelector('#inputWidth');
+const canvasHeight = document.querySelector('#inputHeight');
 
-// When size is submitted by the user, call makeGrid()
+const form = document.querySelector('#sizePicker');
+const table = document.querySelector('#pixelCanvas');
 
 function makeGrid() {
 
