@@ -4,6 +4,9 @@ const canvasHeight = document.querySelector('#inputHeight');
 
 const form = document.querySelector('#sizePicker');
 const table = document.querySelector('#pixelCanvas');
+const swatch = document.querySelector('#colorSwatch');
+
+const MAX_RECENT_COLORS = 10;
 
 let colorSelected = colorPicker.value;
 
@@ -22,6 +25,18 @@ table.addEventListener('click', function(event){
     event.target.style.backgroundColor = colorSelected;
   }
 });
+
+function makeSwatch() {
+  let swatchHtml = `<tr>
+  `;
+  for(let i = 0; i < MAX_RECENT_COLORS; i++){
+    swatchHtml += `<td></td>
+    `
+  }
+  swatchHtml += `</tr>`
+
+  swatch.innerHTML = swatchHtml;
+}
 
 function makeGrid() {
   let tableRows = canvasHeight.value;
@@ -44,4 +59,5 @@ function makeGrid() {
   table.innerHTML = tableHtml;
 }
 
+makeSwatch();
 makeGrid();
