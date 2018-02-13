@@ -8,6 +8,7 @@ const swatch = document.querySelector('#colorSwatch');
 
 const MAX_RECENT_COLORS = 10;
 
+let recentColors = [];
 let colorSelected = colorPicker.value;
 
 form.addEventListener('submit', function(event){
@@ -18,6 +19,7 @@ form.addEventListener('submit', function(event){
 colorPicker.addEventListener('change', function(event){
   console.log("Color changed");
   colorSelected = colorPicker.value;
+  addRecentColor(colorSelected);
 });
 
 table.addEventListener('click', function(event){
@@ -59,5 +61,26 @@ function makeGrid() {
   table.innerHTML = tableHtml;
 }
 
+function addRecentColor(color){
+  // Is the color already in the swatch?
+  if (recentColors.includes(color)){
+    // Remove it from inside and push to the end of the array
+    let index = recentColors.indexOf(color);
+    recentColors.splice(index, 1);
+  } else {
+    if(recentColors.length >= MAX_RECENT_COLORS) recentColors.shift();
+  }
+  recentColors.push(color);
+
+  let swatchTiles = swatch.querySelectorAll('td');
+  console.log(swatchTiles);
+  for(let i = 0; i < recentColors.length; i++){
+    swatchTiles[i].style.backgroundColor = recentColors[i];
+  }
+}
+
 makeSwatch();
+// Once swatch is created, add the initial color to it
+addRecentColor(colorSelected);
+
 makeGrid();
