@@ -17,7 +17,6 @@ form.addEventListener('submit', function(event){
 });
 
 colorPicker.addEventListener('change', function(event){
-  console.log("Color changed");
   colorSelected = colorPicker.value;
   addRecentColor(colorSelected);
 });
@@ -73,7 +72,6 @@ function addRecentColor(color){
   recentColors.push(color);
 
   let swatchTiles = swatch.querySelectorAll('td');
-  console.log(swatchTiles);
   for(let i = 0; i < recentColors.length; i++){
     swatchTiles[i].style.backgroundColor = recentColors[i];
   }
