@@ -38,3 +38,11 @@ td {
 input[type=number] {
     width: 6em;
 }
+
+td.swatchTable{
+  width: 10px;
+}
+
+tr.swatchTable {
+  height: 10px;
+}
