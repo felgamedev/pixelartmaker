@@ -43,3 +43,5 @@ function makeGrid() {
 
   table.innerHTML = tableHtml;
 }
+
+makeGrid();
