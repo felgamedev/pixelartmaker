@@ -27,6 +27,26 @@ table.addEventListener('click', function(event){
   }
 });
 
+// Use recent colors swatch as a selector/eyedropper
+swatch.addEventListener("click", function(event){
+  // Ensure it is the cell being clicked
+  if(event.target.nodeName === "TD"){
+    // Ignore empty background target cells
+    if(event.target.style.backgroundColor !== ""){
+      const childrenOfSwatch = swatch.querySelectorAll("td");
+
+      for(let i = 0; i < recentColors.length; i++){
+        if(childrenOfSwatch[i] === event.target){
+            colorSelected = recentColors[i];
+            colorPicker.value = colorSelected;
+            // Use recent color function to move color to most recent spot
+            addRecentColor(colorSelected);
+        }
+      }
+    }
+  }
+})
+
 function makeSwatch() {
   let swatchHtml = `<tr>
   `;
@@ -37,6 +57,7 @@ function makeSwatch() {
   swatchHtml += `</tr>`
 
   swatch.innerHTML = swatchHtml;
+  swatch.style.cursor = "crosshair";
 }
 
 function makeGrid() {
