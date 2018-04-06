@@ -5,6 +5,7 @@ const canvasHeight = document.querySelector('#inputHeight');
 const form = document.querySelector('#sizePicker');
 const table = document.querySelector('#pixelCanvas');
 const swatch = document.querySelector('#colorSwatch');
+const bordersCheckbox = document.querySelector('#toggleBorders');
 
 const MAX_RECENT_COLORS = 10;
 
@@ -45,7 +46,20 @@ swatch.addEventListener("click", function(event){
       }
     }
   }
-})
+});
+
+bordersCheckbox.addEventListener('click', function(){
+  let cells = document.querySelectorAll('#pixelCanvas td');
+  let toggleBorder = false;
+  if(cells[0].style.border == "none") toggleBorder = true;
+  for(let i = 0; i < cells.length; i++){
+    if(toggleBorder){
+      cells[i].style.border = "1px dotted black";
+    } else {
+      cells[i].style.border = "none";
+    }
+  }
+});
 
 function makeSwatch() {
   let swatchHtml = `<tr>
